@@ -2,6 +2,8 @@ package com.com.leon.util;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -19,8 +21,22 @@ public class OptionalTest {
         Object o1 = o.get();
     }
 
+    @Test
+    public void OptionalMapExample() {
+        List<String> companyNames = Arrays.asList(
+                "paypal", "oracle", "", "microsoft", "", "apple");
+        Optional<List<String>> listOptional = Optional.of(companyNames);
 
+        Optional<Integer> integer = listOptional.map(List::size);
+        int size = listOptional
+                .map(List::size)
+                .orElse(0);
+        assertEquals(6, size);
+    }
 
+    @Test
+    public void OptionalFilterExamle2() {
+    }
 
     @Test
     public void OptionalFilterExample() {
